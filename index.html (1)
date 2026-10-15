@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinship | Anonymous Peer Recovery Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .animate-pulse-ring { animation: pulse-ring 2s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen">
+
+    <!-- Header / Security Banner -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-bold bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">Kinship</span>
+                <span class="text-xs bg-teal-950 text-teal-300 border border-teal-800/60 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                    <i class="fa-solid fa-shield-halved text-teal-400"></i> Zero-Knowledge Encrypted
+                </span>
+            </div>
+            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                <span class="hidden sm:inline">HIPAA-Ready Architecture</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        <!-- Hero Section -->
+        <section class="text-center space-y-4 py-6">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                Anonymous Peer Support <br>
+                <span class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                    Powered by Trust & Privacy
+                </span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base">
+                Secure, token-based matching connecting healthcare organizations and individuals to meaningful peer cohorts, voice spaces, and 24/7 AI-guided coping tools.
+            </p>
+        </section>
+
+        <!-- Live Platform Preview Box -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-w-4xl mx-auto">
+            <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                    <span class="text-xs text-slate-400 font-mono ml-2">kinship-live-workspace.app</span>
+                </div>
+                <span class="text-xs text-teal-400 font-medium bg-teal-950 px-3 py-1 rounded-full border border-teal-800/50">
+                    Interactive Prototype
+                </span>
+            </div>
+
+            <!-- Questionnaire & Matching Interface -->
+            <div id="onboarding-step" class="p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <h2 class="text-xl font-semibold text-white">1. Peer Support Questionnaire</h2>
+                    <p class="text-xs text-slate-400">Complete this anonymous questionnaire to get matched with similar peers.</p>
+                </div>
+
+                <div class="space-y-4 text-sm">
+                    <div>
+                        <label class="block text-slate-300 mb-1 font-medium">Anonymous Alias</label>
+                        <input type="text" id="user-alias" value="Pathfinder_48" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-300 mb-1 font-medium">Primary Recovery / Health Focus</label>
+                        <select id="user-focus" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                            <option>Substance Use Recovery</option>
+                            <option>Behavioral & Habits</option>
+                            <option>General Well-being & Stress</option>
+                            <option>Burnout & Healthcare Staff</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-300 mb-2 font-medium">Choose Your Avatar Representation</label>
+                        <div class="grid grid-cols-4 sm:grid-cols-6 gap-2 text-2xl">
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border-2 border-teal-500 rounded-xl hover:bg-slate-800">🌱</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🌊</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🧘</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">💪</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🌅</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🌲</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">⚡</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🕊️</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🕯️</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">⚓</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🧗</button>
+                            <button onclick="selectAvatar(this)" class="avatar-btn p-3 bg-slate-950 border border-slate-800 rounded-xl hover:bg-slate-800">🌻</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="startMatching()" class="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-slate-950 font-bold py-3.5 rounded-xl shadow-lg transition">
+                    Run Anonymous Peer Match Routine 🚀
+                </button>
+            </div>
+
+            <!-- Workspace View (Hidden initially) -->
+            <div id="workspace-step" class="hidden p-6 sm:p-8 space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs text-teal-400 font-semibold uppercase tracking-wider">Matched Cohort</span>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span>🌱</span> Sunday Morning Serenity
+                        </h3>
+                    </div>
+                    <button onclick="resetApp()" class="text-xs text-slate-400 hover:text-white underline">Re-Match</button>
+                </div>
+
+                <!-- Voice Chat Sandbox -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                            <i class="fa-solid fa-microphone text-teal-400"></i> In-Group Voice Sandbox
+                        </span>
+                        <span class="text-xs text-emerald-400 bg-emerald-950 border border-emerald-800 px-2 py-0.5 rounded-full">3 Active Peers</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-slate-900 p-3 rounded-lg border border-slate-800">
+                        <div class="flex items-center space-x-3">
+                            <div id="mic-indicator" class="w-10 h-10 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-400">
+                                🎙️
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-white">Voice Channel</div>
+                                <div id="mic-status" class="text-xs text-slate-400">Microphone Muted</div>
+                            </div>
+                        </div>
+                        <button onclick="toggleMic()" id="mic-btn" class="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-slate-950 text-xs font-bold rounded-lg transition">
+                            Unmute Mic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat & Safety Intercept -->
+                <div class="space-y-3">
+                    <div class="text-xs font-semibold text-slate-300">Cohort Chat & Safety Protocol</div>
+                    <div id="chat-box" class="h-40 overflow-y-auto bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2 text-xs font-sans">
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800/80">
+                            <span class="font-bold text-teal-400">🌊 Anchor_82:</span> Welcome to the Sunday cohort! Happy to share coping tools.
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800/80">
+                            <span class="font-bold text-emerald-400">🧘 Serene_11:</span> Glad to be here today.
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <input type="text" id="chat-input" placeholder="Type a message or trigger word (e.g. 'crisis' to test 988)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-teal-500">
+                        <button onclick="sendMessage()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg transition">Send</button>
+                    </div>
+                </div>
+
+                <!-- 24/7 AI Coping Companion Option -->
+                <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-robot text-teal-400"></i> Solo AI Coping Companion
+                    </div>
+                    <p class="text-xs text-slate-400">Prefer not to interact in groups right now? Get immediate 1-on-1 private grounding strategies.</p>
+                    <button onclick="triggerAICoping()" class="w-full bg-slate-900 hover:bg-slate-800 text-teal-300 border border-teal-800/60 py-2 rounded-lg text-xs font-medium transition">
+                        Request Grounding Exercise 🧘
+                    </button>
+                    <div id="ai-response" class="hidden text-xs text-emerald-300 bg-emerald-950/50 border border-emerald-800/50 p-3 rounded-lg mt-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlights -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-6">
+            <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-2">
+                <i class="fa-solid fa-user-shield text-teal-400 text-xl"></i>
+                <h3 class="font-bold text-white text-sm">Zero-Knowledge Privacy</h3>
+                <p class="text-xs text-slate-400">Tokenized identities mean no personal names, emails, or PII stored on platform servers.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-2">
+                <i class="fa-solid fa-kit-medical text-emerald-400 text-xl"></i>
+                <h3 class="font-bold text-white text-sm">Automated Safety Intercept</h3>
+                <p class="text-xs text-slate-400">Client-side keyword monitoring instantly triggers 988 Lifeline support modals locally.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-2">
+                <i class="fa-solid fa-people-group text-cyan-400 text-xl"></i>
+                <h3 class="font-bold text-white text-sm">B2B Healthcare Ready</h3>
+                <p class="text-xs text-slate-400">Designed specifically for hospitals, treatment networks, and enterprise health organizations.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-900 py-6 text-center text-xs text-slate-600">
+        &copy; 2026 Kinship Platform. Built for Anonymous Peer Support & Enterprise Healthcare Networks.
+    </footer>
+
+    <script>
+        let isMuted = true;
+        let selectedAvatar = "🌱";
+
+        function selectAvatar(btn) {
+            document.querySelectorAll('.avatar-btn').forEach(b => {
+                b.classList.remove('border-teal-500');
+                b.classList.add('border-slate-800');
+            });
+            btn.classList.remove('border-slate-800');
+            btn.classList.add('border-teal-500');
+            selectedAvatar = btn.innerText;
+        }
+
+        function startMatching() {
+            document.getElementById('onboarding-step').classList.add('hidden');
+            document.getElementById('workspace-step').classList.remove('hidden');
+        }
+
+        function resetApp() {
+            document.getElementById('workspace-step').classList.add('hidden');
+            document.getElementById('onboarding-step').classList.remove('hidden');
+        }
+
+        function toggleMic() {
+            isMuted = !isMuted;
+            const status = document.getElementById('mic-status');
+            const btn = document.getElementById('mic-btn');
+            const indicator = document.getElementById('mic-indicator');
+
+            if (isMuted) {
+                status.innerText = "Microphone Muted";
+                status.className = "text-xs text-slate-400";
+                btn.innerText = "Unmute Mic";
+                indicator.classList.remove('animate-pulse-ring', 'bg-emerald-500/20', 'border-emerald-500');
+                indicator.classList.add('bg-teal-500/20', 'border-teal-500/50');
+            } else {
+                status.innerText = "Active - Speaking...";
+                status.className = "text-xs text-emerald-400 font-semibold";
+                btn.innerText = "Mute Mic";
+                indicator.classList.add('animate-pulse-ring', 'bg-emerald-500/20', 'border-emerald-500');
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const val = input.value.trim();
+            if (!val) return;
+
+            const chatBox = document.getElementById('chat-box');
+            
+            // Check crisis safety intercept
+            if (val.toLowerCase().includes('crisis') || val.toLowerCase().includes('help')) {
+                alert("🚨 SAFETY INTERCEPT TRIGGERED\n\nIf you or someone you know is in crisis, support is available 24/7.\n\nNational Crisis Lifeline: Call or Text 988\nYour connection is anonymous and protected.");
+            }
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = "bg-slate-900 p-2.5 rounded-lg border border-slate-800/80";
+            msgDiv.innerHTML = `<span class="font-bold text-teal-300">${selectedAvatar} You:</span> ${val}`;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            input.value = '';
+        }
+
+        function triggerAICoping() {
+            const res = document.getElementById('ai-response');
+            res.classList.remove('hidden');
+            res.innerHTML = "<strong>🧘 5-4-3-2-1 Grounding Strategy:</strong> Take a deep breath. Acknowledge 5 things you can see around you, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste. You are safe here.";
+        }
+    </script>
+</body>
+</html>
